@@ -109,18 +109,18 @@ public class IPv4AddressStructure {
 		}
 		return result.substring(0, result.length()-1);
 	}
-	public static void main(String[] args) throws Exception
-	{
-		
-		IPv4AddressStructure s = new IPv4AddressStructure("0.0.0.0"); 
-		while(s.ip[0] != 256 && s.ip[1] != 256 && s.ip[2] !=256 && s.ip[3] != 256)
-		{	
-			s = s.getNext(); 
-			System.out.println(s); 
-		}	
-			
-			
-	}
+//	public static void main(String[] args) throws Exception
+//	{
+//		
+//		IPv4AddressStructure s = new IPv4AddressStructure("0.0.0.0"); 
+//		while(s.ip[0] != 256 && s.ip[1] != 256 && s.ip[2] !=256 && s.ip[3] != 256)
+//		{	
+//			s = s.getNext(); 
+//			System.out.println(s); 
+//		}	
+//			
+//			
+//	}
 	
 	@Override
 	public boolean equals(Object obj) {
