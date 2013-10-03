@@ -25,10 +25,13 @@ public class IPGenerator implements Runnable
 		while(current.equals(to) == false)
 		{
 			current = current.getNext(); 
+			
+			System.out.println(current); 
+			
 			synchronized (addressList) {	
 				this.addressList.add(this.current); 
 			}
-			Thread.sleep(50); 
+			//Thread.sleep(50); 
 		}
 	}
 	@Override
@@ -45,6 +48,17 @@ public class IPGenerator implements Runnable
 	}
 	
 	
-	
+	public static void main(String...  args) throws Exception
+	{
+		
+		
+		ConcurrentLinkedQueue<IPv4AddressStructure> list = new ConcurrentLinkedQueue<IPv4AddressStructure>(); 
+		IPGenerator g = new IPGenerator("0.0.0.0","0.1.233.22", list); 
+		g.run(); 
+		System.out.println(g.addressList); 
+		//System.out.println(Runtime.getRuntime().totalMemory()); 
+		
+		
+	}
 
 }
