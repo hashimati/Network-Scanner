@@ -26,11 +26,12 @@ public class IPPingerService implements Runnable {
 		{
 			
 			pool.execute(new IPPinger(ip, addressList)); 
-			Thread.sleep(100); 
+			
 		}
 		
 		pool.shutdown();
-		pool.awaitTermination(00, TimeUnit.SECONDS);
+		pool.awaitTermination(10, TimeUnit.MINUTES);
+		Thread.sleep(100); 
 	}
 	
 	@Override

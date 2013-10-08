@@ -24,13 +24,10 @@ public class IPGenerator implements Runnable {
 				this.addressList.add(this.current);
 			}
 		}
-		
 		pool =Executors.newFixedThreadPool(5000); 
 	}
-
-	public void generate() throws Exception {
-
-		
+	public void generate() throws Exception 
+	{
 		mainLoop:
 		while (current.equals(to) == false) {
 			ArrayList<IPv4AddressStructure> list = new ArrayList<IPv4AddressStructure>(); 
@@ -48,11 +45,10 @@ public class IPGenerator implements Runnable {
 			}
 			catch(Exception ex)
 			{
-				ex.printStackTrace(); 
-				
+				ex.printStackTrace(); 		
 			}
 			pool.shutdown();
-			pool.awaitTermination(00, TimeUnit.SECONDS);
+			pool.awaitTermination(10, TimeUnit.MINUTES);
 			
 		//	if(current.equals(to)) break mainLoop; 
 			
@@ -75,12 +71,11 @@ public class IPGenerator implements Runnable {
 			ex.printStackTrace();
 		}
 	}
-
 	public static void main(String... args) throws Exception {
 
 		ConcurrentLinkedQueue<IPv4AddressStructure> list = new ConcurrentLinkedQueue<IPv4AddressStructure>();
 		IPGenerator g = new IPGenerator("192.168.1.0", "192.168.1.255", list);
-		g.run();
+		g.run();// rejectedExecution
 		System.out.println(g.addressList);
 		// System.out.println(Runtime.getRuntime().totalMemory());
 

@@ -24,7 +24,7 @@ public class IPPinger implements Runnable
 			if(ip.isReachable())
 			{
 				synchronized (addressList){
-					System.out.println(ip); 
+					System.out.println("I'm pinging " +ip); 
 					addressList.add(ip); 
 				}
 				Thread.sleep(1000); 
