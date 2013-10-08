@@ -1,5 +1,7 @@
 package com.ahmed.network.scanner;
 
+import java.net.InetAddress;
+
 public class IPv4AddressStructure {
 	
 	int[] ip = new int[4];  
@@ -121,7 +123,11 @@ public class IPv4AddressStructure {
 //			
 //			
 //	}
-	
+	public boolean isReachable() throws Exception
+	{
+		
+		return InetAddress.getAllByName(toString())[0].isReachable(1000000); 
+	}
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
