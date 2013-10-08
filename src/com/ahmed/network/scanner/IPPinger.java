@@ -21,12 +21,13 @@ public class IPPinger implements Runnable
 	public void run(){
 		
 		try{
-			
 			if(ip.isReachable())
 			{
 				synchronized (addressList){
+					System.out.println(ip); 
 					addressList.add(ip); 
 				}
+				Thread.sleep(1000); 
 			}
 		}catch(Exception ex){}
 		
