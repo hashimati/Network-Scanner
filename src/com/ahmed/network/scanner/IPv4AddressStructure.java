@@ -63,8 +63,6 @@ public class IPv4AddressStructure {
         if(!mayBeIP(IP)) throw new Exception("Not an IP address"); 
         else {
         String[] splited = IP.split("\\."); 
-        for(String x : splited)
-            System.out.println(x); 
         return (Integer.parseInt(splited[0])+"."
                 +Integer.parseInt(splited[1])
                 +"."+Integer.parseInt(splited[2])
