@@ -38,15 +38,39 @@ public class IPv4AddressStructure {
 	}
 	
 	
-	private boolean isValidIP(String ip)
-	{
-		String regex = "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
-                + "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
+	private boolean isValidIP(String ip)throws Exception{
+        	String regex = "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
+        	 + "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
                 + "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
                 + "([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])";
-        	
-        	return ip.matches(regex);
-	}
+        
+        
+        	return cleanedIP(ip).matches(regex);
+    	}
+	    private boolean mayBeIP(String ip)
+    {
+        String regex = "(([0-9]*)\\.)"
+                + "(([0-9]*)\\.)"
+                + "(([0-9]*)\\.)"
+                + "([0-9]*)"; 
+        
+        
+        
+        return ip.matches(regex); 
+    }
+    private String cleanedIP(String IP) throws Exception
+    {
+        if(!mayBeIP(IP)) throw new Exception("Not an IP address"); 
+        else {
+        String[] splited = IP.split("\\."); 
+        for(String x : splited)
+            System.out.println(x); 
+        return (Integer.parseInt(splited[0])+"."
+                +Integer.parseInt(splited[1])
+                +"."+Integer.parseInt(splited[2])
+                +"."+Integer.parseInt(splited[3]))
+;       }
+    }
 	public IPv4AddressStructure getNext() throws Exception
 	{
 		/*loop:
