@@ -40,27 +40,12 @@ public class IPv4AddressStructure {
 	
 	private boolean isValidIP(String ip)
 	{
-		String list[] = ip.split("\\."); 
-		if(list.length != 4)
-		{
-				return false; 
-		}
-		else {
-			for(String s : list)
-			{
-				try
-				{
-					int number = Integer.parseInt(s); 
-					
-					if(number > 255 || number < 0) 
-						return false; 
-				}
-				catch(Exception e){
-					return false; 
-				}
-			}
-		}
-		return true; 
+		String regex = "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
+                + "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
+                + "(([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\\.)"
+                + "([0-9]|[0-9][0-9]|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])";
+        	
+        	return ip.matches(regex);
 	}
 	public IPv4AddressStructure getNext() throws Exception
 	{
